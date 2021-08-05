@@ -6,7 +6,7 @@
     </a>
 </li>
 <li class="nav-item">
-    <a href="{{ route('brands') }}" class="nav-link active">
+    <a href="{{ route('brands', ['action' => 'get']) }}" class="nav-link active">
         <i class="nav-icon fas fa-home"></i>
         <p>Marcas</p>
     </a>

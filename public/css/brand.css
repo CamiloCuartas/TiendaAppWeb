@@ -8,4 +8,36 @@ select#selectBrand{
     width: 250px;
     margin: auto;
     padding-left: 5px;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+div#divInputNewBrand{
+    height: 38px;
+    width: 250px;
+    margin: auto;
+}
+
+button#buttonSaveBrand{
+    width: 250px;
+    margin: 0 auto 16px auto;
+}
+
+.alert{
+    width: 250px;
+    margin: auto;
+    text-align: center;
+}
+
+div#divButtonSaveBrand{
+    margin: auto;
+    width: 250px;
+}
+
+form{
+    display: grid;
+}
+
+div#divFormelements{
+    margin: auto;
 }
