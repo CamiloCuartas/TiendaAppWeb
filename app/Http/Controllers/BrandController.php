@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
@@ -10,11 +11,11 @@ class BrandController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function index()
+    public function index(): View
     {
-        //
+        return view('admin.tiendaApp.brand');
     }
 
     /**
