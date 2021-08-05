@@ -14,6 +14,7 @@
     @yield('third_party_stylesheets')
 
     @stack('page_css')
+    @stack('styles')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

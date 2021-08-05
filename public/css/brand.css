@@ -1,0 +1,11 @@
+div#divSelectBrand{
+    height: 96%;
+    display: grid;
+}
+
+select#selectBrand{
+    height: 40px;
+    width: 250px;
+    margin: auto;
+    padding-left: 5px;
+}

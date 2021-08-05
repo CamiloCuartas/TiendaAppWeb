@@ -544,17 +544,19 @@ pre code {
   overflow-y: scroll;
 }
 
+/*padding-right: 7.5px;*/
+/*padding-left: 7.5px;*/
 .container,
 .container-fluid,
 .container-xl,
 .container-lg,
 .container-md,
 .container-sm {
-  width: 100%;
-  padding-right: 7.5px;
-  padding-left: 7.5px;
-  margin-right: auto;
-  margin-left: auto;
+    width: 100%;
+    padding: 8px;
+    margin-right: auto;
+    margin-left: auto;
+    height: 100%;
 }
 
 @media (min-width: 576px) {
@@ -43102,4 +43104,8 @@ a.text-muted:hover {
 }
 .dark-mode .dark-mode.accent-gray-dark .page-item .page-link:hover, .dark-mode .dark-mode.accent-gray-dark .page-item .page-link:focus {
   color: #3f474e;
+}
+
+section.content{
+    height: calc(100vh - 114px);
 }

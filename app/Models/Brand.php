@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Brand extends Model
 {
     use HasFactory;
+
+    public static function getAllBrands(): array
+    {
+        return self::all()->toArray();
+    }
 }

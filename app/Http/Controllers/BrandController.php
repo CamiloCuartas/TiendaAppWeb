@@ -15,7 +15,8 @@ class BrandController extends Controller
      */
     public function index(): View
     {
-        return view('admin.tiendaApp.brand');
+        $data = Brand::getAllBrands();
+        return view('admin.tiendaApp.brand', compact('data'));
     }
 
     /**
