@@ -5,7 +5,7 @@ div#divSelectBrand{
 
 select#selectBrand{
     height: 40px;
-    width: 250px;
+    width: 254px;
     margin: auto;
     padding-left: 5px;
     border: 1px solid #ced4da;
@@ -14,24 +14,24 @@ select#selectBrand{
 
 div#divInputNewBrand{
     height: 38px;
-    width: 250px;
+    width: 254px;
     margin: auto;
 }
 
 button#buttonSaveBrand{
-    width: 250px;
+    width: 254px;
     margin: 0 auto 16px auto;
 }
 
 .alert{
-    width: 250px;
+    width: 254px;
     margin: auto;
     text-align: center;
 }
 
 div#divButtonSaveBrand{
     margin: auto;
-    width: 250px;
+    width: 254px;
 }
 
 form{
@@ -40,4 +40,14 @@ form{
 
 div#divFormelements{
     margin: auto;
+}
+
+button#buttonUpdateBrand{
+    width: 254px;
+    margin-bottom: 16px;
+}
+
+div#divSelectUpdateBrand,
+div#divInputUpdateBrand{
+    margin-bottom: 16px;
 }

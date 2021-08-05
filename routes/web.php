@@ -17,6 +17,7 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {return view('welcome');});
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/brands/{action}', [BrandController::class, 'index'])->name('brands');
-Route::post('/brands', [BrandController::class, 'store']);
+Route::post('/brands/store', [BrandController::class, 'store']);
+Route::post('/brands/edit', [BrandController::class, 'edit']);
 
 Auth::routes();

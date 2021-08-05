@@ -26,7 +26,7 @@ class ItemSeeder extends Seeder
                     'name' => $data[0],
                     'size' => $data[1],
                     'observations' => $data[2],
-                    'providerName' => $data[3],
+                    'providerId' => $data[3],
                     'onHand' => $data[4],
                     'shippingDate' => $data[5],
                     "created_at" => Carbon::now(),

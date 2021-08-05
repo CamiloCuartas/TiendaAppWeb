@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property mixed providerName
+ * @method static find(mixed $get)
  */
 
 class Brand extends Model

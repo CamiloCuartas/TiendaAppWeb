@@ -29,7 +29,7 @@ class BrandController extends Controller
      */
     public function store(Request $request): View
     {
-        $action = 'post';
+        $action = 'store';
         $error = '';
         $succes = true;
         try {
@@ -42,6 +42,34 @@ class BrandController extends Controller
             $succes = false;
             $error = $exception->getMessage();
             return view('admin.tiendaApp.brand', compact( 'action', 'error', 'succes'));
+        }
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  Request  $request
+     * @return View
+     */
+    public function edit(Request $request): View
+    {
+        $action = 'edit';
+        $error = '';
+        $succes = true;
+        try {
+            $brand = Brand::find($request->get('selectBrand'));
+            $brand->providerName = $request->get('editBrand');
+            $brand->save();
+            $data = Brand::getAllBrands();
+            return view('admin.tiendaApp.brand',
+                compact( 'data', 'action', 'error', 'succes'));
+        }
+        catch (Exception $exception) {
+            $succes = false;
+            $error = $exception->getMessage();
+            $data = Brand::getAllBrands();
+            return view('admin.tiendaApp.brand',
+                compact( 'data','action', 'error', 'succes'));
         }
     }
 
@@ -67,16 +95,6 @@ class BrandController extends Controller
 //        //
 //    }
 //
-//    /**
-//     * Show the form for editing the specified resource.
-//     *
-//     * @param  \App\Models\Brand  $brand
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function edit(Brand $brand)
-//    {
-//        //
-//    }
 //
 //    /**
 //     * Update the specified resource in storage.

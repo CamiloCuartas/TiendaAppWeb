@@ -16,27 +16,27 @@
             </li>
             <li class="nav-item">
                 <a
-                    class="nav-link {{$action === 'post' ? 'active' : ''}}"
-                    href="{{route('brands', ['action' => 'post'])}}">Crear
+                    class="nav-link {{$action === 'store' ? 'active' : ''}}"
+                    href="{{route('brands', ['action' => 'store'])}}">Crear
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <a
+                    class="nav-link {{$action === 'edit' ? 'active' : ''}}"
+                    href="{{route('brands', ['action' => 'edit'])}}">Editar
+                </a>
             </li>
         </ul>
         <div id="divSelectBrand">
             @if($action === 'get')
-                <select id="selectBrand" class="form-select" aria-label="Default select example">
+                <select id="selectBrand" class="form-select" aria-label="">
                     <option selected>Lista de proveedores</option>
                     @foreach($data as $item)
                         <option value="{{$item['id']}}">{{$item['providerName']}}</option>
                     @endforeach
                 </select>
-            @elseif($action === 'post')
-                <form action="{{ url('/brands') }}" method="post">
+            @elseif($action === 'store')
+                <form action="{{ url('/brands/store') }}" method="post">
                     @csrf
                     <div id="divFormelements">
                         <div id="divInputNewBrand" class="mb-3">
@@ -64,6 +64,46 @@
                         @endif
                     </div>
                 </form>
+            @elseif($action === 'edit')
+                <form action="{{ url('/brands/edit') }}" method="post">
+                    @csrf
+                    <div id="divFormelements">
+                        <div id="divSelectUpdateBrand">
+                            <select id="selectBrand" class="form-select" aria-label="" name="selectBrand">
+                                <option value="-1" selected>Lista de proveedores</option>
+                                @foreach($data as $item)
+                                    <option value="{{$item['id']}}">{{$item['providerName']}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div id="divInputUpdateBrand">
+                            <input
+                                type="text"
+                                name="editBrand"
+                                class="form-control"
+                                id="inputEditBrand"
+                                placeholder="Edicion de marca"
+                                aria-label=""
+                            >
+                        </div>
+                        <div id="divButtonUpdateBrand">
+                            <button id="buttonUpdateBrand" type="submit" class="btn btn-primary">Crear</button>
+                        </div>
+                        @if($error)
+                            <div class="alert alert-danger" role="alert">
+                                !! Ha ocurrido un error !!
+                            </div>
+                        @endif
+                        @if($succes)
+                            <div class="alert alert-success" role="alert">
+                                !! Actualizado con exito !!
+                            </div>
+                        @endif
+                    </div>
+                </form>
+                @push('page_scripts')
+                    <script src="{{asset('js/brand/brand.js')}}" async type="module"></script>
+                @endpush
             @endif
         </div>
     </div>

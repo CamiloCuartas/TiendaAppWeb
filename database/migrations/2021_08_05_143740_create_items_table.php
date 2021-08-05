@@ -18,12 +18,12 @@ class CreateItemsTable extends Migration
             $table->string('name');
             $table->string('size', 1);
             $table->string('observations');
-            $table->string('providerName');
+            $table->unsignedBigInteger('providerId');
             $table->integer('onHand');
             $table->dateTime('shippingDate');
             $table->timestamps();
-            $table->foreign('providerName')
-                ->references('providerName')
+            $table->foreign('providerId')
+                ->references('id')
                 ->on('brands')
                 ->onDelete('cascade');
         });
