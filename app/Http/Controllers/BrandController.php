@@ -27,7 +27,7 @@ class BrandController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @param  Request  $request
+     * @param  $request
      * @return View
      */
     public function store(Request $request): View
@@ -53,7 +53,7 @@ class BrandController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Request  $request
+     * @param  $request
      * @return View
      */
     public function edit(Request $request): View
@@ -81,7 +81,7 @@ class BrandController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Request  $request
+     * @param  $request
      * @return View
      */
     public function destroy(Request $request): View

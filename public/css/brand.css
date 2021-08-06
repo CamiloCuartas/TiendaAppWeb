@@ -149,7 +149,8 @@ div#divTable{
     max-height: calc(100vh - 240px);
 }
 
-.fas.fa-trash.fa-lg{
+.fas.fa-trash.fa-lg,
+.fas.fa-pencil-alt.fa-lg{
     pointer-events: none;
 }
 

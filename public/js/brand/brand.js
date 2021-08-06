@@ -39,6 +39,29 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    const editItem = (buttonEdit) => {
+        const tr = buttonEdit.target.closest('tr');
+        const id = tr.querySelector('td.id').innerText;
+        const name = tr.querySelector('td.name input').value;
+        const size = tr.querySelector('td.size select').value;
+        const observations = tr.querySelector('td.observations input').value;
+        const onHand = tr.querySelector('td.onHand input').value;
+        const shippingDate = tr.querySelector('td.shippingDate input').value;
+        const formData = new FormData();
+        formData.append('id', id);
+        formData.append('name', name);
+        formData.append('size', size);
+        formData.append('observations', observations);
+        formData.append('onHand', onHand);
+        formData.append('shippingDate', shippingDate);
+        asyncPost({
+            url: '/items/edit',
+            formData: formData
+        }).then(data => {
+            window.location = window.location.href
+        });
+    }
+
     const asyncPost = async (queryData) => {
 
         let {url,formData,method = 'POST',type = "json"} = queryData;
@@ -61,17 +84,26 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
     if (document.getElementById('selectBrand')) {
-        document.getElementById('selectBrand').addEventListener('change', updateInput);
+        document.getElementById('selectBrand')
+            .addEventListener('change', updateInput);
     }
 
     if (document.getElementById('selectBrandToShowData')) {
-        document.getElementById('selectBrandToShowData').addEventListener('change', fillTableWhitArticles);
+        document.getElementById('selectBrandToShowData')
+            .addEventListener('change', fillTableWhitArticles);
     }
 
     if (document.querySelector('td.delete')) {
         document.querySelectorAll('td.delete')
             .forEach(htmlElement => {
                 htmlElement.addEventListener('click', deleteItem)
+            });
+    }
+
+    if (document.querySelector('td.edition')) {
+        document.querySelectorAll('td.edition')
+            .forEach(htmlElement => {
+                htmlElement.addEventListener('click', editItem)
             });
     }
 });
