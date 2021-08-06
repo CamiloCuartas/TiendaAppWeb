@@ -24,5 +24,6 @@ Route::post('/brands/destroy', [BrandController::class, 'destroy']);
 Route::post('/items/destroy', [ItemController::class, 'destroy']);
 Route::post('/items/edit', [ItemController::class, 'edit']);
 Route::get('/items/{action}', [ItemController::class, 'index'])->name('items');
+Route::post('/items/store', [ItemController::class, 'store']);
 
 Auth::routes();

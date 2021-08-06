@@ -206,7 +206,7 @@
                 </div>
             @elseif($action === 'storeItem')
                 <div id="divDestroy">
-                    <form action="{{ url('/brands/destroy') }}" method="post">
+                    <form action="{{ url('/items/store') }}" method="post">
                         @csrf
                         <div id="divFormelements">
                             <div id="divInputItemName" class="mb-3">
@@ -227,27 +227,23 @@
                             <div id="divInputItemObservation" class="mb-3">
                                 <input
                                     type="text"
-                                    name="newBrand"
+                                    name="observations"
                                     class="form-control"
                                     id="inputItemObaservation"
                                     placeholder="Obaservacion"
                                     aria-label=""
                                 >
                             </div>
-{{--                            <div id="divInputItem" class="mb-3">--}}
-{{--                                <input--}}
-{{--                                    type="text"--}}
-{{--                                    name="newBrand"--}}
-{{--                                    class="form-control"--}}
-{{--                                    id="inputNewBrand"--}}
-{{--                                    placeholder="Nueva Marca"--}}
-{{--                                    aria-label=""--}}
-{{--                                >--}}
-{{--                            </div>--}}
+                            <select id="selectItemBrand" class="form-select" aria-label="" name="providerId">
+                                <option value="-1" selected>Lista de proveedores</option>
+                                @foreach($data as $datas)
+                                    <option value="{{$datas['id']}}">{{$datas['providerName']}}</option>
+                                @endforeach
+                            </select>
                             <div id="divInputItemOnHand" class="mb-3">
                                 <input
                                     type="number"
-                                    name="newBrand"
+                                    name="onHand"
                                     class="form-control"
                                     id="inputItemOnHand"
                                     placeholder="Stock"
@@ -257,13 +253,14 @@
                             <div id="divInputItemShippingDate" class="mb-3">
                                 <input
                                     type="date"
-                                    name="newBrand"
+                                    name="shippingDate"
                                     class="form-control"
                                     id="inputItemShippingDate"
                                     placeholder="Fecha Envio"
                                     aria-label=""
                                 >
                             </div>
+                            <button id="buttonCreateItem" type="submit" class="btn btn-primary">Crear</button>
                             @if($error)
                                 <div class="alert alert-danger" role="alert">
                                     !! Ha ocurrido un error !!

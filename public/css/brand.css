@@ -43,6 +43,7 @@ form{
 
 div#divFormelements{
     margin: auto;
+    width: 254px;
 }
 
 button#buttonUpdateBrand{
@@ -159,4 +160,26 @@ div#divEdit,
 div#divDestroy{
     display: grid;
     height: 100%;
+}
+
+#selectItemSize{
+    width: 100%;
+    height: 38px;
+    padding-left: 116px;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    margin-bottom: 16px;
+}
+
+#selectItemBrand{
+    width: 100%;
+    height: 38px;
+    margin-bottom: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+#buttonCreateItem{
+    width: 100%;
+    margin-bottom: 16px;
 }

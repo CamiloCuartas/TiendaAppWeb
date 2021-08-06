@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Item;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -51,7 +52,6 @@ class ItemController extends Controller
         }
     }
 
-
     /**
      * Display a listing of the resource.
      * @param $action
@@ -61,51 +61,40 @@ class ItemController extends Controller
     {
         $error = '';
         $succes = false;
+        $data = Brand::getAllBrands();
         return view('admin.tiendaApp.brand',
-            compact('action', 'error', 'succes'));
+            compact('action', 'error', 'succes', 'data'));
     }
-//
-//    /**
-//     * Show the form for creating a new resource.
-//     *
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function create()
-//    {
-//        //
-//    }
-//
-//    /**
-//     * Store a newly created resource in storage.
-//     *
-//     * @param  \Illuminate\Http\Request  $request
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function store(Request $request)
-//    {
-//        //
-//    }
-//
-//    /**
-//     * Display the specified resource.
-//     *
-//     * @param  \App\Models\Item  $item
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function show(Item $item)
-//    {
-//        //
-//    }
-//
-//    /**
-//     * Update the specified resource in storage.
-//     *
-//     * @param  \Illuminate\Http\Request  $request
-//     * @param  \App\Models\Item  $item
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function update(Request $request, Item $item)
-//    {
-//        //
-//    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  $request
+     * @return View
+     */
+    public function store(Request $request): View
+    {
+        $action = 'storeItem';
+        $error = '';
+        $succes = true;
+        try {
+            $item = new Item();
+            $item->name = $request->get('name');
+            $item->size = $request->get('size');
+            $item->observations = $request->get('observations');
+            $item->providerId = $request->get('providerId');
+            $item->onHand = $request->get('onHand');
+            $item->shippingDate = $request->get('shippingDate');
+            $item->save();
+            $data = Brand::getAllBrands();
+            return view('admin.tiendaApp.brand',
+                compact( 'action', 'error', 'succes', 'data'));
+        }
+        catch (Exception $exception) {
+            $succes = false;
+            $error = $exception->getMessage();
+            return view('admin.tiendaApp.brand',
+                compact( 'action', 'error', 'succes'));
+        }
+    }
 }
