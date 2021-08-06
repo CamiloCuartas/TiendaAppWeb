@@ -19,5 +19,6 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/brands/{action}', [BrandController::class, 'index'])->name('brands');
 Route::post('/brands/store', [BrandController::class, 'store']);
 Route::post('/brands/edit', [BrandController::class, 'edit']);
+Route::post('/brands/destroy', [BrandController::class, 'destroy']);
 
 Auth::routes();

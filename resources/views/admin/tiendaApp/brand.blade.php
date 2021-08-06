@@ -26,6 +26,12 @@
                     href="{{route('brands', ['action' => 'edit'])}}">Editar
                 </a>
             </li>
+            <li class="nav-item">
+                <a
+                    class="nav-link {{$action === 'destroy' ? 'active' : ''}}"
+                    href="{{route('brands', ['action' => 'destroy'])}}">Eliminar
+                </a>
+            </li>
         </ul>
         <div id="divSelectBrand">
             @if($action === 'get')
@@ -87,7 +93,7 @@
                             >
                         </div>
                         <div id="divButtonUpdateBrand">
-                            <button id="buttonUpdateBrand" type="submit" class="btn btn-primary">Crear</button>
+                            <button id="buttonUpdateBrand" type="submit" class="btn btn-primary">Editar</button>
                         </div>
                         @if($error)
                             <div class="alert alert-danger" role="alert">
@@ -104,6 +110,33 @@
                 @push('page_scripts')
                     <script src="{{asset('js/brand/brand.js')}}" async type="module"></script>
                 @endpush
+            @elseif($action === 'destroy')
+                <form action="{{ url('/brands/destroy') }}" method="post">
+                    @csrf
+                    <div id="divFormelements">
+                        <div id="divSelectDeleteBrand">
+                            <select id="selectBrand" class="form-select" aria-label="" name="selectBrand">
+                                <option value="-1" selected>Lista de proveedores</option>
+                                @foreach($data as $item)
+                                    <option value="{{$item['id']}}">{{$item['providerName']}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div id="divButtonDeleteBrand">
+                            <button id="buttonDeleteBrand" type="submit" class="btn btn-primary">Eliminar</button>
+                        </div>
+                        @if($error)
+                            <div class="alert alert-danger" role="alert">
+                                !! Ha ocurrido un error !!
+                            </div>
+                        @endif
+                        @if($succes)
+                            <div class="alert alert-success" role="alert">
+                                !! Eliminado con exito !!
+                            </div>
+                        @endif
+                    </div>
+                </form>
             @endif
         </div>
     </div>

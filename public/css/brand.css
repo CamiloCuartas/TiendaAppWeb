@@ -48,6 +48,12 @@ button#buttonUpdateBrand{
 }
 
 div#divSelectUpdateBrand,
-div#divInputUpdateBrand{
+div#divInputUpdateBrand,
+div#divSelectDeleteBrand,
+div#divButtonDeleteBrand{
     margin-bottom: 16px;
+}
+
+button#buttonDeleteBrand{
+    width: 254px;
 }
