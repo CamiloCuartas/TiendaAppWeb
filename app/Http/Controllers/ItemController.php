@@ -6,6 +6,7 @@ use App\Models\Item;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
 
 class ItemController extends Controller
 {
@@ -51,15 +52,18 @@ class ItemController extends Controller
     }
 
 
-//    /**
-//     * Display a listing of the resource.
-//     *
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function index()
-//    {
-//        //
-//    }
+    /**
+     * Display a listing of the resource.
+     * @param $action
+     * @return View
+     */
+    public function index($action): View
+    {
+        $error = '';
+        $succes = false;
+        return view('admin.tiendaApp.brand',
+            compact('action', 'error', 'succes'));
+    }
 //
 //    /**
 //     * Show the form for creating a new resource.

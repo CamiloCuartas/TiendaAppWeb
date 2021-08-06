@@ -11,25 +11,31 @@
                 <a
                     class="nav-link {{$action === 'get' ? 'active' : ''}}"
                     aria-current="page"
-                    href="{{route('brands', ['action' => 'get'])}}">Consultar
+                    href="{{route('brands', ['action' => 'get'])}}">Consultar Marca
                 </a>
             </li>
             <li class="nav-item">
                 <a
                     class="nav-link {{$action === 'store' ? 'active' : ''}}"
-                    href="{{route('brands', ['action' => 'store'])}}">Crear
+                    href="{{route('brands', ['action' => 'store'])}}">Crear Marca
                 </a>
             </li>
             <li class="nav-item">
                 <a
                     class="nav-link {{$action === 'edit' ? 'active' : ''}}"
-                    href="{{route('brands', ['action' => 'edit'])}}">Editar
+                    href="{{route('brands', ['action' => 'edit'])}}">Editar Marca
                 </a>
             </li>
             <li class="nav-item">
                 <a
                     class="nav-link {{$action === 'destroy' ? 'active' : ''}}"
-                    href="{{route('brands', ['action' => 'destroy'])}}">Eliminar
+                    href="{{route('brands', ['action' => 'destroy'])}}">Eliminar Marca
+                </a>
+            </li>
+            <li class="nav-item">
+                <a
+                    class="nav-link {{$action === 'storeItem' ? 'active' : ''}}"
+                    href="{{route('items', ['action' => 'storeItem'])}}">Crear Item
                 </a>
             </li>
         </ul>
@@ -184,6 +190,79 @@
                             </div>
                             <div id="divButtonDeleteBrand">
                                 <button id="buttonDeleteBrand" type="submit" class="btn btn-primary">Eliminar</button>
+                            </div>
+                            @if($error)
+                                <div class="alert alert-danger" role="alert">
+                                    !! Ha ocurrido un error !!
+                                </div>
+                            @endif
+                            @if($succes)
+                                <div class="alert alert-success" role="alert">
+                                    !! Eliminado con exito !!
+                                </div>
+                            @endif
+                        </div>
+                    </form>
+                </div>
+            @elseif($action === 'storeItem')
+                <div id="divDestroy">
+                    <form action="{{ url('/brands/destroy') }}" method="post">
+                        @csrf
+                        <div id="divFormelements">
+                            <div id="divInputItemName" class="mb-3">
+                                <input
+                                    type="text"
+                                    name="name"
+                                    class="form-control"
+                                    id="inputItemName"
+                                    placeholder="Nuevo Item"
+                                    aria-label=""
+                                >
+                            </div>
+                            <select name="size" id="selectItemSize" aria-label="" class="form-select" >
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                            </select>
+                            <div id="divInputItemObservation" class="mb-3">
+                                <input
+                                    type="text"
+                                    name="newBrand"
+                                    class="form-control"
+                                    id="inputItemObaservation"
+                                    placeholder="Obaservacion"
+                                    aria-label=""
+                                >
+                            </div>
+{{--                            <div id="divInputItem" class="mb-3">--}}
+{{--                                <input--}}
+{{--                                    type="text"--}}
+{{--                                    name="newBrand"--}}
+{{--                                    class="form-control"--}}
+{{--                                    id="inputNewBrand"--}}
+{{--                                    placeholder="Nueva Marca"--}}
+{{--                                    aria-label=""--}}
+{{--                                >--}}
+{{--                            </div>--}}
+                            <div id="divInputItemOnHand" class="mb-3">
+                                <input
+                                    type="number"
+                                    name="newBrand"
+                                    class="form-control"
+                                    id="inputItemOnHand"
+                                    placeholder="Stock"
+                                    aria-label=""
+                                >
+                            </div>
+                            <div id="divInputItemShippingDate" class="mb-3">
+                                <input
+                                    type="date"
+                                    name="newBrand"
+                                    class="form-control"
+                                    id="inputItemShippingDate"
+                                    placeholder="Fecha Envio"
+                                    aria-label=""
+                                >
                             </div>
                             @if($error)
                                 <div class="alert alert-danger" role="alert">
