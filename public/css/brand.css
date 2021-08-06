@@ -148,3 +148,14 @@ div#divTable{
     overflow: auto;
     max-height: calc(100vh - 240px);
 }
+
+.fas.fa-trash.fa-lg{
+    pointer-events: none;
+}
+
+div#divStore,
+div#divEdit,
+div#divDestroy{
+    display: grid;
+    height: 100%;
+}
