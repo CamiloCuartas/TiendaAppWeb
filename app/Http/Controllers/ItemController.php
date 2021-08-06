@@ -3,10 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use stdClass;
 
 class ItemController extends Controller
 {
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  $request
+     * @return JsonResponse
+     */
+    public function destroy(Request $request): JsonResponse
+    {
+        try {
+            $item = Item::find($request->get('id'));
+            $item->delete();
+            return response()->json(['error' => false]);
+        }
+        catch (Exception $exception) {
+            return response()->json(['error' => true, 'messaje' => $exception->getMessage()]);
+        }
+    }
 //    /**
 //     * Display a listing of the resource.
 //     *
@@ -71,16 +91,4 @@ class ItemController extends Controller
 //    {
 //        //
 //    }
-
-//    /**
-//     * Remove the specified resource from storage.
-//     *
-//     * @param  \App\Models\Item  $item
-//     * @return \Illuminate\Http\Response
-//     */
-    public function destroy(Request $request)
-    {
-        $prueba = $request;
-        return 'ok';
-    }
 }
