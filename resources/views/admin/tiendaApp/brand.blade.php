@@ -35,12 +35,65 @@
         </ul>
         <div id="divSelectBrand">
             @if($action === 'get')
-                <select id="selectBrand" class="form-select" aria-label="">
-                    <option selected>Lista de proveedores</option>
-                    @foreach($data as $item)
-                        <option value="{{$item['id']}}">{{$item['providerName']}}</option>
-                    @endforeach
-                </select>
+                <div id="divSelectToShowData">
+                    <select id="selectBrandToShowData" class="form-select" aria-label="">
+                        <option selected>Lista de proveedores</option>
+                        @foreach($data as $item)
+                            <option value="{{$item['id']}}">{{$item['providerName']}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div id="divTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="id">id</th>
+                                <th class="name">name</th>
+                                <th class="size">size</th>
+                                <th class="observations">observations</th>
+                                <th class="onHand">onHand</th>
+                                <th class="shippingDate">shippingDate</th>
+                                <th class="edition"></th>
+                                <th class="delete"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($items as $item)
+                                <tr>
+                                    <td class="id">{{$item['id']}}</td>
+                                    <td class="name">
+                                        <input type="text" aria-label="" value="{{$item['name']}}">
+                                    </td>
+                                    <td class="size">
+                                        <select name="" id="" aria-label="">
+                                            <option value="S" {{$item['size'] === 'S' ? 'selected' : ''}}>S</option>
+                                            <option value="M" {{$item['size'] === 'M' ? 'selected' : ''}}>M</option>
+                                            <option value="L" {{$item['size'] === 'L' ? 'selected' : ''}}>L</option>
+                                        </select>
+                                    </td>
+                                    <td class="observations">
+                                        <input type="text" aria-label="" value="{{$item['observations']}}">
+                                    </td>
+                                    <td class="onHand">
+                                        <input type="number" aria-label="" value="{{$item['onHand']}}">
+                                    </td>
+                                    <td class="shippingDate">
+                                        <input type="date" aria-label="" value="{{$item['shippingDate']}}">
+                                    </td>
+                                    <td class="edition">
+                                        <i class="fas fa-pencil-alt fa-lg"></i>
+                                    </td>
+                                    <td class="delete">
+                                        <i class="fas fa-trash fa-lg"></i>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                @push('page_scripts')
+                    <script src="{{asset('js/brand/brand.js')}}" async type="module"></script>
+                @endpush
             @elseif($action === 'store')
                 <form action="{{ url('/brands/store') }}" method="post">
                     @csrf

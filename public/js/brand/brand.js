@@ -8,5 +8,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
         inputEditBrand.value = selectedValue ? selectedValue.innerText : '';
     }
 
-    document.getElementById('selectBrand').addEventListener('change', updateInput);
+    const fillTableWhitArticles = (selectBrand) => {
+        console.log(selectBrand);
+    }
+
+    if (document.getElementById('selectBrand')) {
+        document.getElementById('selectBrand').addEventListener('change', updateInput);
+    }
+
+    if (document.getElementById('selectBrandToShowData')) {
+        document.getElementById('selectBrandToShowData').addEventListener('change', fillTableWhitArticles);
+    }
 });

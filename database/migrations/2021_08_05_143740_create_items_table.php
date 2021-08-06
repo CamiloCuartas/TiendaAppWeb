@@ -20,7 +20,7 @@ class CreateItemsTable extends Migration
             $table->string('observations');
             $table->unsignedBigInteger('providerId');
             $table->integer('onHand');
-            $table->dateTime('shippingDate');
+            $table->date('shippingDate');
             $table->timestamps();
             $table->foreign('providerId')
                 ->references('id')

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {
     use HasFactory;
+
+    public static function getAllData(): array
+    {
+        return self::all()->toArray();
+    }
 }

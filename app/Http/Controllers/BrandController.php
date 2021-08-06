@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use App\Models\Item;
 use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -19,8 +20,9 @@ class BrandController extends Controller
         $error = '';
         $succes = false;
         $data = Brand::getAllBrands();
+        $items = Item::getAllData();
         return view('admin.tiendaApp.brand',
-            compact('data', 'action', 'error', 'succes'));
+            compact('data', 'action', 'error', 'succes', 'items'));
     }
 
     /**
