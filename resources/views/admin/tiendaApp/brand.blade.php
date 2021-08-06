@@ -37,7 +37,7 @@
             @if($action === 'get')
                 <div id="divSelectToShowData">
                     <select id="selectBrandToShowData" class="form-select" aria-label="">
-                        <option selected>Lista de proveedores</option>
+                        <option value="-1" selected>Lista de proveedores</option>
                         @foreach($data as $item)
                             <option value="{{$item['id']}}">{{$item['providerName']}}</option>
                         @endforeach
@@ -55,6 +55,7 @@
                                 <th class="shippingDate">shippingDate</th>
                                 <th class="edition"></th>
                                 <th class="delete"></th>
+                                <th class="providerId d-none"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -86,6 +87,7 @@
                                     <td class="delete">
                                         <i class="fas fa-trash fa-lg"></i>
                                     </td>
+                                    <td class="providerId d-none">{{$item['providerId']}}</td>
                                 </tr>
                             @endforeach
                         </tbody>

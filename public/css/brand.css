@@ -1,6 +1,5 @@
 div#divSelectBrand{
     height: 96%;
-    display: grid;
 }
 
 select#selectBrandToShowData,
@@ -147,5 +146,5 @@ td.id {
 
 div#divTable{
     overflow: auto;
-    margin-bottom: 15px;
+    max-height: calc(100vh - 240px);
 }

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function() {
 
     const updateInput = (selectBrand) => {
         selectBrand = selectBrand.target;
@@ -9,7 +9,22 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
     const fillTableWhitArticles = (selectBrand) => {
-        console.log(selectBrand);
+        const rowsTable = [...document.querySelectorAll('table tbody tr')];
+        showAllRows(rowsTable);
+        if (selectBrand.target.value !== '-1') {
+            rowsTable.map(row => {
+                    if (row.querySelector('.providerId').innerText !== selectBrand.target.value) {
+                        row.classList.add('d-none');
+                    }
+                }
+            )
+        }
+    }
+
+    const showAllRows = (rows) => {
+        rows.map(row => {
+            row.classList.remove('d-none');
+        })
     }
 
     if (document.getElementById('selectBrand')) {
