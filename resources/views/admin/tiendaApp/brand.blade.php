@@ -268,7 +268,7 @@
                             @endif
                             @if($succes)
                                 <div class="alert alert-success" role="alert">
-                                    !! Eliminado con exito !!
+                                    !! Creado con exito !!
                                 </div>
                             @endif
                         </div>
