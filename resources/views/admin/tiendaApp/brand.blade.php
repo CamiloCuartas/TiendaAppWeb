@@ -100,7 +100,7 @@
                     </table>
                 </div>
                 @push('page_scripts')
-                    <script src="{{asset('js/brand/brand.js')}}" async type="module"></script>
+                    <script src="{{asset('js/brand/brand.js')}}" defer type="module"></script>
                 @endpush
             @elseif($action === 'store')
                 <div id="divStore">
@@ -173,7 +173,7 @@
                     </form>
                 </div>
                 @push('page_scripts')
-                    <script src="{{asset('js/brand/brand.js')}}" async type="module"></script>
+                    <script src="{{asset('js/brand/brand.js')}}" defer type="module"></script>
                 @endpush
             @elseif($action === 'destroy')
                 <div id="divDestroy">

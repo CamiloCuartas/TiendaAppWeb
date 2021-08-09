@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     const fillTableWhitArticles = (selectBrand) => {
+        console.log('prueba');
         const rowsTable = [...document.querySelectorAll('table tbody tr')];
         showAllRows(rowsTable);
         if (selectBrand.target.value !== '-1') {
