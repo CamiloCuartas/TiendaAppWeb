@@ -1,0 +1,41 @@
+version: "3.7"
+
+services:
+    mysql:
+        image: mysql:5.7
+        environment:
+            MYSQL_ROOT_PASSWORD: Mede1035.
+            MYSQL_DATABASE: TiendaAppWeb
+            MYSQL_USER: user
+            MYSQL_PASSWORD: Mede1035.
+        ports:
+        -   33069:3306
+        volumes:
+        -   ./basesDeDatos/schemas:/var/lib/mysql
+        networks:
+            laravel-net:
+                ipv4_address: 173.16.100.9
+    laravel-prod:
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        ports:
+        -   8200:80
+        volumes:
+        - ./:/var/www
+        - ./public:/var/www/html
+        networks:
+            laravel-net:
+                ipv4_address: 173.16.100.10
+        depends_on:
+            -   mysql
+networks:
+    laravel-net:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 173.16.100.0/16
+
+
+
